@@ -11,6 +11,10 @@ sudo apt-get install libreadline-dev texinfo
 ```
 
 # Boot up ARM
+
+URL: http://ftp.cn.debian.org/debian/dists/stretch/main/installer-armhf/current/images/netboot/
+URL: http://ftp.nl.debian.org/debian/dists/stretch/main/installer-armhf/current/images/netboot/
+
 ```
 #!/bin/bash
 
