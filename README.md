@@ -85,6 +85,30 @@ sudo screen -dm /opt/qemu/bin/qemu-system-mipsel -m 1024 -M malta -kernel boot.s
 
 ```
 
+# Mount Image
+
+Note: 2048 * 512 = 1048576 for mounting boot
+
+```
+$ sudo fdisk -lu debian-jessie.img
+Disk debian-jessie.img: 8 GiB, 8589934592 bytes, 16777216 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x0cb4077d
+
+Device             Boot    Start      End  Sectors  Size Id Type
+debian-jessie.img1 *        2048   499711   497664  243M 83 Linux
+debian-jessie.img2        499712 15958015 15458304  7.4G 83 Linux
+debian-jessie.img3      15960062 16775167   815106  398M  5 Extended
+debian-jessie.img5      15960064 16775167   815104  398M 82 Linux swap / Solaris
+
+```
+```
+sudo mount -o loop,offset=1048576 debian-stretch.mipsel.img tmp/
+```
+
 # Installation
 ```
 apt-get install python2.7 python-pip python-dev git libssl-dev libffi-dev build-essential
