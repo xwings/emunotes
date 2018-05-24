@@ -14,11 +14,6 @@ if [ $# -eq 0 ];then
     exit 1
 fi
 
-if [ $# -eq 0 ]
-  then
-    echo "No arguments supplied"
-fi
-
 if [ ! -d $modeldir ]; then
     echo "Error: Model not found"
     exit 1
