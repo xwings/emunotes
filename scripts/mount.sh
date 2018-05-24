@@ -16,6 +16,7 @@ fi
 
 if [ ! -d $modeldir ]; then
     echo "Error: Model not found"
+    echo "Available models are: $(ls /opt)"
     exit 1
 fi
 
