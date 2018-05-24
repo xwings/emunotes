@@ -1,7 +1,12 @@
 #!/bin/sh
 
 model="$1"
-modeldir="$opt/$model"
+modeldir="/opt/$model"
+
+if [ $# -eq 0 ]
+  then
+    echo "No arguments supplied"
+fi
 
 if [ ! -d $modeldir ]; then
     echo "model not found"
