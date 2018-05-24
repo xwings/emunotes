@@ -3,13 +3,24 @@
 model="$1"
 modeldir="/opt/$model"
 
+
+if [[ $EUID -ne 0 ]]; then
+   echo "Error: This script must be run as root"
+   exit 1
+fi
+
+if [ $# -eq 0 ];then
+    echo "Error: No arguments supplied"
+    exit 1
+fi
+
 if [ $# -eq 0 ]
   then
     echo "No arguments supplied"
 fi
 
 if [ ! -d $modeldir ]; then
-    echo "model not found"
+    echo "Error: Model not found"
     exit 1
 fi
 
