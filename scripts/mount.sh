@@ -4,12 +4,12 @@ model="$1"
 modeldir="/opt/$model"
 
 
-if [[ $EUID -ne 0 ]]; then
-   echo "Error: This script must be run as root"
-   exit 1
+if [ $(id -u) -ne 0 ]; then 
+    echo "Please run as root"
+    exit 1
 fi
 
-if [ $# -eq 0 ];then
+if [ $# -eq 0 ]; then
     echo "Error: No arguments supplied"
     exit 1
 fi
