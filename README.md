@@ -10,6 +10,29 @@ sudo apt-get install libreadline-dev texinfo
 ./configure --target-list=arm-softmmu,mips-softmmu,mips64-softmmu,mips64el-softmmu,mipsel-softmmu,aarch64-softmmu,arm-linux-user,aarch64-linux-user,mips64el-linux-user,mipsel-linux-user,mips-linux-user,mips64-linux-user --prefix=/opt/qemu --python=/usr/bin/python2.7
 ```
 
+# rc.local for debian
+
+```
+#!/bin/bash
+
+# some config for tenda/ maybe some other routers
+swapon /dev/sda5
+
+ip link add link br0 name vlan0 type vlan id 0
+ifconfig eth1 up
+ifconfig vlan0 up
+
+exit 0
+```
+
+# activate rc.local for debian
+```
+chmod +x /etc/rc.local
+systemctl enable rc-local
+systemctl start rc-local.service
+```
+
+
 # Boot up ARM
 
 URL: http://ftp.cn.debian.org/debian/dists/stretch/main/installer-armhf/current/images/netboot/
@@ -128,4 +151,34 @@ mount --rbind /sys sys/
 mount --rbind /dev dev/
 cd /opt
 chroot /opt/acXX /bin/sh
+```
+
+# network
+```
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo br0
+iface lo inet loopback
+
+# The primary network interface
+#allow-hotplug enp0s11
+#iface enp0s11 inet static
+#       address 10.253.253.10/24
+#       gateway 10.253.253.254
+        # dns-* options are implemented by the resolvconf package, if installed#
+#       dns-nameservers 10.10.18.254
+
+
+iface br0 inet static
+        bridge_ports eth0
+        address 10.253.253.11/24
+            gateway 10.253.253.254
+        # dns-* options are implemented by the resolvconf package, if installed
+        dns-nameservers 10.10.18.254
+
+iface vlan1 inet static
+    vlan-raw-device br0
+    #address 192.168.1.1
+    #netmask 255.255.255.0
 ```
