@@ -1,0 +1,7 @@
+#!/usr/bin/pyhton
+
+f = file('goahead.patch')
+contents = f.read().replace(b'\x00\x00\x00\x00\x04\x00\x41\x04\x00\x00\x00\x00',b'\x00\x00\x00\x00\xFA\x8E\x10\x08\x00\x00\x00\x00')
+f = file('goahead.patch0','w')
+f.write(contents)
+f.close()
