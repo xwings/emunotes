@@ -5,6 +5,13 @@ sudo apt-get install libreadline-dev texinfo
 ./configure --prefix=/opt/gdb --with-python --with-system-readline && make -j4 && make -j4 install
 ```
 
+#Note for cross compile gdb
+
+```
+apt-get install linux-libc-dev-mips-cross libc6-mips-cross libc6-dev-mips-cross binutils-mips-linux-gnu gcc-mips-linux-gnu g++-mips-linux-gnu
+./configure --target=mipsel-unknown-linux-gnu --prefix=/opt/gdb --with-python --with-system-readline && make -j4 && make -j4 install
+```
+
 #Note for compiling qemu
 ```
 ./configure --target-list=arm-softmmu,mips-softmmu,mips64-softmmu,mips64el-softmmu,mipsel-softmmu,aarch64-softmmu,arm-linux-user,aarch64-linux-user,mips64el-linux-user,mipsel-linux-user,mips-linux-user,mips64-linux-user --prefix=/opt/qemu --python=/usr/bin/python2.7
