@@ -1,3 +1,8 @@
+# Note for rysnc
+```
+rsync -avz -e /home/fuck root@shit.com:~/
+```
+
 #Note for compiling gdb
 
 ```
