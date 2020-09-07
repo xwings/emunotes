@@ -19,7 +19,7 @@ apt-get install linux-libc-dev-mips-cross libc6-mips-cross libc6-dev-mips-cross 
 
 #Note for compiling qemu
 ```
-apt-get install git libssl-dev libffi-dev build-essential python3-pip zlib1g-dev pkg-config libglib2.0-dev libpixman-1-dev
+apt-get install git libssl-dev libffi-dev build-essential python3-pip zlib1g-dev pkg-config libglib2.0-dev libpixman-1-dev bridge-utils
 ./configure --target-list=arm-softmmu,mips-softmmu,mips64-softmmu,mips64el-softmmu,mipsel-softmmu,aarch64-softmmu,arm-linux-user,aarch64-linux-user,mips64el-linux-user,mipsel-linux-user,mips-linux-user,mips64-linux-user --prefix=/opt/qemu --python=/usr/bin/python3
 ```
 
